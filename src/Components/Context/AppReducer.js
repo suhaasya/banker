@@ -25,6 +25,9 @@ export default (state, action) => {
                 }
                 })
             return afterTransfer
+        case 'REMOVE':
+            const afterRemove = state.filter((acc)=>acc.accNo!==state[action.userAccIndex].accNo)
+            return afterRemove
         default:
             return state;
     }

@@ -107,12 +107,20 @@ export const GlobalProvider = ({children})=>{
           
       })
   }
+  function remove(){
+      dispatch({
+          type: 'REMOVE',
+          userAccIndex: userAccIndex,
+          
+      })
+  }
   
 
     return(
         <GlobalContext.Provider value={{
         reqLoan,
-        transfer,  
+        transfer,
+        remove,  
         state:state, 
         userAccIndex:userAccIndex,
         setUserAccIndex: setUserAccIndex,

@@ -1,4 +1,5 @@
 import { useContext} from 'react'
+import { Link } from 'react-router-dom';
 import Card from '../Card/Card'
 import LoanCard from '../Card/LoanCard'
 import { GlobalContext } from '../Context/GlobalState';
@@ -8,6 +9,8 @@ import Movements from './Movements';
 export default function Bank(){
     const {userAccIndex,state}= useContext(GlobalContext)
     console.log(state)
+    console.log(typeof userAccIndex)
+    console.log(userAccIndex)
     const total = state[userAccIndex].movements.reduce((acc,mov)=>mov+acc)
     const d = new Date();
 

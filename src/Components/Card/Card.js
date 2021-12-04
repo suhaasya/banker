@@ -1,4 +1,4 @@
-
+import { Link, Outlet } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { GlobalContext } from '../Context/GlobalState';
 import './Card.css'
@@ -14,7 +14,7 @@ export default function Card(props) {
       pin:""
       
     })
-    const {transfer,state,userAccIndex} = useContext(GlobalContext)
+    const {transfer,state,userAccIndex,remove} = useContext(GlobalContext)
     const style={
       background:props.background,
     }
@@ -28,13 +28,19 @@ export default function Card(props) {
 
 
     function handleClick(e){
-        e.preventDefault()
+        
         
         if(props.btnTitle === 'close'){
-          alert("suhas")
+         if (inpDet.user === state[userAccIndex].accNo && inpDet.pin === state[userAccIndex].pin) {
+            remove() 
+            alert("account remove successfully")
+         }else{
+           
+           alert("wrong credentials")
+         }
         }else{
 
-          
+          e.preventDefault()
           const takerI = state.findIndex(user=>(
             user.accNo === inpDet.acc_no
           ))
@@ -63,7 +69,10 @@ export default function Card(props) {
               <input type="text" value={props.inp1Name==="acc_no"?inpDet.acc_no:inpDet.user} name={props.inp1Name} className="form__input form__input--to" placeholder={props.inp1Placeholder} onChange={handleChange}/>
               <input type="text" value={props.inp2Name==="amount"?inpDet.amount:inpDet.pin} name={props.inp2Name}  className="form__input form__input--amount" placeholder={props.inp2Placeholder} onChange={handleChange}/>
           </div>
+              <Link to="/">
               <button className="form__btn form__btn--transfer" onClick={handleClick}>{props.btnTitle}</button>
+              </Link>
+          <Outlet/>
       </section>
     );
   }

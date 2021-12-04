@@ -17,9 +17,15 @@ export default function LoanCard(props) {
 
   function handleClick(e){
     console.log(amount)
+
       e.preventDefault()
-      reqLoan(amount)
-      setAmount("")
+      
+      function operation(){
+        reqLoan(amount)
+        setAmount("")
+      }
+
+      setTimeout(operation, 3000)
   }
 
 

@@ -11,7 +11,7 @@ export default function Login(){
     })
 
     const {state, setUserAccIndex}= useContext(GlobalContext)
-
+    
 
     function handleChange(e){
         const {name,value} = e.target;
@@ -21,18 +21,26 @@ export default function Login(){
             }
         ))
     }
-
+    let isExist = true
     function handleClick(e){
-        // e.preventDefault()
+        
         console.log(state);
         
         const i = state.findIndex(user=>(
 
             user.owner.lower === credentials.username.lower && user.pin === +credentials.password
         ))
-        setUserAccIndex(i)
-    }
+        console.log(i)
+        if(typeof i !== "string" && i!==-1 && typeof i !== "undefined"){
 
+            setUserAccIndex(i)
+            
+        }else{
+            alert("account doesnt exist")
+            e.preventDefault()
+        }
+    }
+    console.log(isExist)
     console.log(credentials);
     return(
         <div className="login-main">

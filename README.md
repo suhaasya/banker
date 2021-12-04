@@ -1,13 +1,35 @@
-# help needed
 
-## whats wrong?
-this app have transfer money funtion. 
-so i wanted to remove money from my account. 
-and sent it too other.
-i am able remove from my account. 
-but not able to send it to other.
+# Banking App
 
-in appreducer.js you will see transfer option there 3 lines are commented.
-if you uncomment and try to run it wont work why?
-because i am able to set Taker index i dont know why?
-something it work and most time it doesnt.
+## Installation
+
+```bash
+  npm install 
+```
+## Start
+
+```bash
+  npm start 
+```
+    
+## Login Credentials
+- sahas - 1111 
+- yesh - 4444
+- piyush - 3333
+- gaurav - 2222
+
+## issue
+- open project folder in vscode
+- open AppReducer.js 
+- uncomment that 3 lines
+- now log in with above Credentials and try to transfer money.
+
+you will see error that realted to undefined. why this?
+- i had created global state for takerindex 
+so i can take that index and use it anywhere.
+in card.js you will see i am setting takerindex but its not setting.
+and i am getting error. because takerindex is still undefined. 
+i actually dont know how to solve this.
+
+sometimes it get set and apps work fine but 
+most of the times it giver error.

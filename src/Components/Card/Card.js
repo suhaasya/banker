@@ -14,7 +14,7 @@ export default function Card(props) {
       pin:""
       
     })
-    const {transfer,state, setTakerAccIndex,userAccIndex,recIndex, setRecIndex} = useContext(GlobalContext)
+    const {transfer,state,userAccIndex} = useContext(GlobalContext)
     const style={
       background:props.background,
     }
@@ -25,28 +25,32 @@ export default function Card(props) {
       
     }
     console.log(inpDet)
+
+
     function handleClick(e){
         e.preventDefault()
         
-        setInpDet({
-          acc_no: "",
-          amount:"",
-          user:"",
-          pin:""
-        })
-        const takerI = state.findIndex(user=>(
-          user.accNo === inpDet.acc_no
-        ))
-        if(takerI===userAccIndex){
-          alert("you cant transfer to yourself")
+        if(props.btnTitle === 'close'){
+          alert("suhas")
         }else{
-          transfer(inpDet.amount)
-          console.log(takerI)
-          console.log(setTakerAccIndex)
-          setTakerAccIndex(takerI)
-          setRecIndex(takerI)
+
+          
+          const takerI = state.findIndex(user=>(
+            user.accNo === inpDet.acc_no
+          ))
+          if(takerI===userAccIndex){
+            alert("you cant transfer to yourself")
+          }else{
+            transfer(inpDet.amount, takerI)
+            
+          }
+          setInpDet({
+            acc_no: "",
+            amount:"",
+            user:"",
+            pin:""
+          })
         }
-        
 
       
         

@@ -95,17 +95,16 @@ export const GlobalProvider = ({children})=>{
           type: 'REQ_LOAN',
           payload: movements,
           userAccIndex: userAccIndex,
-          takerAccIndex: takerAccIndex,
-          recIndex: recIndex
+          
       })
   }
-  function transfer(movements){
+  function transfer(movements,takerIndex){
       dispatch({
           type: 'TRANSFER',
           payload: movements,
           userAccIndex: userAccIndex,
-          takerAccIndex: takerAccIndex,
-          recIndex: recIndex
+          takerAccIndex: takerIndex,
+          
       })
   }
   
@@ -119,8 +118,7 @@ export const GlobalProvider = ({children})=>{
         setUserAccIndex: setUserAccIndex,
         takerAccIndex: takerAccIndex,
         setTakerAccIndex:setTakerAccIndex,
-        recIndex,
-        setRecIndex
+        
         }}>
             {children}
         </GlobalContext.Provider> 

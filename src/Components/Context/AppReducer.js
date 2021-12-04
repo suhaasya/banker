@@ -1,7 +1,7 @@
 
 export default (state, action) => {
     // state.map((s)=>console.log(s))
-    console.log(action.recIndex)
+    console.log(action)
     switch(action.type){
         
         case 'REQ_LOAN':
@@ -17,9 +17,9 @@ export default (state, action) => {
                 if(acc.accNo === state[action.userAccIndex].accNo){
                     return {...acc, movements: [-action.payload, ...acc.movements]}
                 }
-                // else if(acc.accNo === state[action.takerAccIndex].accNo){
-                //     return {...acc, movements: [action.payload, ...acc.movements]}
-                // }
+                else if(acc.accNo === state[action.takerAccIndex].accNo){
+                    return {...acc, movements: [action.payload, ...acc.movements]}
+                }
                 else{
                     return {...acc}
                 }

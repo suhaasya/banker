@@ -18,12 +18,13 @@ export default function Card(props) {
     const style={
       background:props.background,
     }
+    
     function handleChange(e){
       const {value,name} = e.target;
       setInpDet(prev=>({...prev, [name]: +value}))
-      console.log(inpDet)
+      
     }
-
+    console.log(inpDet)
     function handleClick(e){
         e.preventDefault()
         

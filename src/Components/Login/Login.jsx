@@ -4,13 +4,14 @@ import { GlobalContext } from '../Context/GlobalState';
 import './Login.css'
 
 export default function Login(){
-
+    const [signup, setSignup] = useState(false)
     const [credentials,setCredentials] = useState({
         username:"",
-        password:""
+        password:"",
+        cpassword:""
     })
 
-    const {state, setUserAccIndex}= useContext(GlobalContext)
+    const {state, setUserAccIndex, createAcc}= useContext(GlobalContext)
     
 
     function handleChange(e){
@@ -23,7 +24,11 @@ export default function Login(){
     }
     let isExist = true
     function handleClick(e){
-        
+        if(signup){
+            const pin = credentials.password === credentials.cpassword && +credentials.password
+            createAcc(credentials.username, +pin)
+            window.location.reload(true);
+        }else{
         console.log(state);
         
         const i = state.findIndex(user=>(
@@ -43,6 +48,13 @@ export default function Login(){
                 password:""
             })
         }
+
+        
+
+        }
+    }
+    function handleAnchorClick(){
+        setSignup(prev=>!prev)
     }
     console.log(isExist)
     console.log(credentials);
@@ -50,9 +62,12 @@ export default function Login(){
         <div className="login-main">
             <input className="inp" value={credentials.username} type="text" placeholder="USERNAME" name="username" onChange={handleChange}/>
             <input className="inp" value={credentials.password} type="password" placeholder="PASSWORD" name="password" onChange={handleChange}/>
+            {signup && <input className="inp" value={credentials.cpassword} type="password" placeholder="CONFIRM PASSWORD" name="cpassword" onChange={handleChange}/>}
             <Link to="home">
-            <button className="button" onClick={handleClick}>LOGIN</button>
+            <button className="button" onClick={handleClick}>{signup?'SIGN UP':'LOGIN'}</button>
             </Link>
+            {signup?<p>Already have account? <a onClick={handleAnchorClick}>Login here.</a></p>:<p>Don't have account? <a onClick={handleAnchorClick}>Create one here</a></p>}
+            {/* <p>Don't have account <a>Create one here</a></p> */}
             <Outlet/>
         </div>
     )

@@ -1,7 +1,7 @@
 
 export default (state, action) => {
     // state.map((s)=>console.log(s))
-    console.log(action)
+    console.log(state.length)
     switch(action.type){
         
         case 'REQ_LOAN':
@@ -28,6 +28,18 @@ export default (state, action) => {
         case 'REMOVE':
             const afterRemove = state.filter((acc)=>acc.accNo!==state[action.userAccIndex].accNo)
             return afterRemove
+        case 'CREATE':
+            const afterCreate = [...state, {
+                accNo: state.length + 1,
+                owner: action.owner,
+                movements: [1000],
+                interestRate: 1,
+                pin: action.pin,
+                movementsDates: [new Date().toISOString()],
+                currency: 'USD',
+                locale: 'en-US',
+            }]
+            return afterCreate
         default:
             return state;
     }

@@ -118,13 +118,23 @@ export const GlobalProvider = ({children})=>{
           
       })
   }
+  function createAcc(username, password){
+      dispatch({
+          type: 'CREATE',
+          owner: username,
+          pin: password,
+          
+      }
+      )
+  }
   
 
     return(
         <GlobalContext.Provider value={{
         reqLoan,
         transfer,
-        remove,  
+        remove,
+        createAcc,  
         state:state, 
         userAccIndex:userAccIndex,
         setUserAccIndex: setUserAccIndex,

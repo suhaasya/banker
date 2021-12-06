@@ -14,7 +14,7 @@ export default function Bank(){
     const total = state[userAccIndex].movements.reduce((acc,mov)=>mov+acc)
     const d = new Date();
     const totalDeposite = state[userAccIndex].movements.filter(mov=>mov>0).reduce((acc,mov)=>mov+acc)
-    const totalWithdrawal = state[userAccIndex].movements.filter(mov=>mov<0).reduce((acc,mov)=>mov+acc)
+    const totalWithdrawal = state[userAccIndex].movements.filter(mov=>mov<0).reduce((acc,mov)=>mov+acc,0)
     // console.log(totalDepositeArr)
     const interest = state[userAccIndex].movements.filter(mov => mov > 0)
     .map(deposit => (deposit * state[userAccIndex].interestRate) / 100)

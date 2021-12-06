@@ -8,11 +8,20 @@ import Movements from './Movements';
 
 export default function Bank(){
     const {userAccIndex,state}= useContext(GlobalContext)
-    console.log(state)
-    console.log(typeof userAccIndex)
-    console.log(userAccIndex)
+    // console.log(state)
+    // console.log(typeof userAccIndex)
+    // console.log(userAccIndex)
     const total = state[userAccIndex].movements.reduce((acc,mov)=>mov+acc)
     const d = new Date();
+    const totalDeposite = state[userAccIndex].movements.filter(mov=>mov>0).reduce((acc,mov)=>mov+acc)
+    const totalWithdrawal = state[userAccIndex].movements.filter(mov=>mov<0).reduce((acc,mov)=>mov+acc)
+    // console.log(totalDepositeArr)
+    const interest = state[userAccIndex].movements.filter(mov => mov > 0)
+    .map(deposit => (deposit * state[userAccIndex].interestRate) / 100)
+    .filter((int, i, arr) => {
+      // console.log(arr);
+      return int >= 1;
+    }).reduce((acc, int) => acc + int, 0);
 
     return(
         <section className="bank-main">
@@ -67,6 +76,23 @@ export default function Bank(){
                 inp1Name = "user"
                 inp2Name = "pin"
                 />
+            </div>
+            <div className="summary">
+                <div>
+                <p className="summary_label summary_label_in">IN</p>
+                <p className="summary_value summary_value_in">{totalDeposite}€</p>
+                </div>
+                <div>
+                <p className="summary_label summary_label_out">OUT</p>
+                <p className="summary_value summary_value_out">{totalWithdrawal}€</p>
+                </div>
+                <div>
+                <p className="summary_label summary_label_interest">INTEREST</p>
+                <p className="summary_value summary_value_interest">{interest}€</p>
+                </div>
+                
+                
+                
             </div>
         </section>
     )

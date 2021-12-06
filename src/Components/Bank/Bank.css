@@ -38,7 +38,7 @@
 }
 .movements{
     overflow: scroll;
-    height: 80%;
+    height: 97vh;
 }
 .movements__row{
     display: flex;
@@ -70,4 +70,22 @@
     margin-left: auto;
     font-size: 1.2rem;
     text-align: right;
+}
+.summary{
+    display: flex;
+    justify-content: space-between;
+}
+.summary_label{
+    margin-right: 1rem;
+}
+.summary_value{
+    font-size: 2rem;
+    color: #6ab04c;
+}
+.summary_value_out{
+    color: #eb4d4b;
+}
+.summary div{
+    display: flex;
+    align-items: center;
 }

@@ -7,7 +7,7 @@ export default (state, action) => {
         case 'REQ_LOAN':
             const afterLoan = state.map((acc)=>
                 acc.accNo === state[action.userAccIndex].accNo
-                ? {...acc, movements: [action.payload, ...acc.movements]}
+                ? {...acc, movements: [action.payload, ...acc.movements],movementsDates:[new Date().toISOString(),...acc.movementsDates],locale: 'en-IN'}
                 : {...acc}
             )
             return afterLoan
@@ -15,10 +15,10 @@ export default (state, action) => {
             const afterTransfer = state.map((acc)=>{
 
                 if(acc.accNo === state[action.userAccIndex].accNo){
-                    return {...acc, movements: [-action.payload, ...acc.movements]}
+                    return {...acc, movements: [-action.payload, ...acc.movements],movementsDates:[new Date().toISOString(),...acc.movementsDates],locale: 'en-IN'}
                 }
                 else if(acc.accNo === state[action.takerAccIndex].accNo){
-                    return {...acc, movements: [action.payload, ...acc.movements]}
+                    return {...acc, movements: [action.payload, ...acc.movements],movementsDates:[new Date().toISOString(),...acc.movementsDates],locale: 'en-IN'}
                 }
                 else{
                     return {...acc}

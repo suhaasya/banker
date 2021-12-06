@@ -17,7 +17,13 @@ export default function Bank(){
     return(
         <section className="bank-main">
             {/* balance */}
-            <h1>Welcome Back {state[userAccIndex].owner}</h1>
+            
+            <div className="welcome-header">
+                <h1>Welcome Back {state[userAccIndex].owner}</h1>
+                <Link to="/">
+                <h1 className="fas fa-sign-out-alt"></h1>
+                </Link>
+            </div>
             <div className="balance">
                 <div>
                     <p className="balance__label">Current balance</p>
@@ -31,7 +37,7 @@ export default function Bank(){
             {/* movements */}
             <div className="movements">
                 
-                {state[userAccIndex].movements.map((mov,i)=><Movements key={i} amount={mov}/>)}
+                {state[userAccIndex].movements.map((mov,i)=><Movements key={i} amount={mov} locale={state[userAccIndex].locale} date={state[userAccIndex].movementsDates[i]} />)}
                 
             </div>
 

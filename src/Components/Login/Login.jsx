@@ -38,14 +38,18 @@ export default function Login(){
         }else{
             alert("account doesnt exist")
             e.preventDefault()
+            setCredentials({
+                username:"",
+                password:""
+            })
         }
     }
     console.log(isExist)
     console.log(credentials);
     return(
         <div className="login-main">
-            <input className="inp" type="text" placeholder="USERNAME" name="username" onChange={handleChange}/>
-            <input className="inp" type="password" placeholder="PASSWORD" name="password" onChange={handleChange}/>
+            <input className="inp" value={credentials.username} type="text" placeholder="USERNAME" name="username" onChange={handleChange}/>
+            <input className="inp" value={credentials.password} type="password" placeholder="PASSWORD" name="password" onChange={handleChange}/>
             <Link to="home">
             <button className="button" onClick={handleClick}>LOGIN</button>
             </Link>

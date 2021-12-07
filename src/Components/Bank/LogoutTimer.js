@@ -3,13 +3,13 @@ import React from 'react';
 
 export default function LogoutTimer(props) {
 
-    const [timer, setTimer] = React.useState(5*60);
-        timer === 0 && (window.location.href="/")
+    const [timer, setTimer] = React.useState(props.time*60);
+        // timer === 0 && (window.location.href="/")
         const min = Math.floor(timer/60);
         const sec = Math.floor(timer%60);
         const id =React.useRef(null);
         const clear=()=>{
-        window.clearInterval(id.current)
+            (window.location.href="/")
         }
         React.useEffect(()=>{
             id.current=window.setInterval(()=>{
@@ -27,7 +27,7 @@ export default function LogoutTimer(props) {
     
     return (
         <p className="logout-timer">
-            You will be logged out in <span class="timer">{min<10&&0}{min}:{sec<10&&0}{sec}</span>
+            You will be logged out in <span className="timer">{min<10&&0}{min}:{sec<10&&0}{sec}</span>
         </p>
     );
   }

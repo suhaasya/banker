@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState, useEffect } from "react"
+import { createContext, useReducer, useState } from "react"
 import AppReducer from "./AppReducer"
 const initialState = [
     {
@@ -82,17 +82,14 @@ const initialState = [
 
 export const GlobalContext = createContext(initialState)
 
-// localStorage.setItem("state",JSON.stringify(initialState))
-// JSON.parse(localStorage.getItem("state"))||
+
 export const GlobalProvider = ({children})=>{
     const [state, dispatch] = useReducer(AppReducer,JSON.parse(localStorage.getItem("state"))||initialState)
     localStorage.setItem("state", JSON.stringify(state))
 
     const [userAccIndex, setUserAccIndex] = useState("")
     const [takerAccIndex, setTakerAccIndex] = useState("")
-    const [recIndex,setRecIndex] = useState("")
 
-    console.log(recIndex)
 
     function reqLoan(movements){
       dispatch({

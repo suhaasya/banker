@@ -1,16 +1,12 @@
 
-import './App.css';
-import Login from './Components/Login/Login';
-import { GlobalProvider } from './Components/Context/GlobalState';
-import Bank from './Components/Bank/Bank';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Routes,
-  Route,
-  Link
+  BrowserRouter as Router, Route, Routes
 } from "react-router-dom";
-console.log(GlobalProvider)
+import './App.css';
+import Bank from './Components/Bank/Bank';
+import { GlobalProvider } from './Components/Context/GlobalState';
+import Login from './Components/Login/Login';
+
 
 function App() {
   return (

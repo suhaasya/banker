@@ -24,7 +24,6 @@ export default function Card(props) {
       setInpDet(prev=>({...prev, [name]: +value}))
       
     }
-    console.log(inpDet)
 
 
     function handleClick(e){
@@ -46,6 +45,8 @@ export default function Card(props) {
           ))
           if(takerI===userAccIndex){
             alert("you cant transfer to yourself")
+          }else if(props.total<=0 || inpDet.amount>props.total){
+            alert("that much money is not present in bank")
           }else{
             transfer(inpDet.amount, takerI)
             

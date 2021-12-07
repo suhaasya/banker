@@ -22,7 +22,7 @@ export default function Login(){
             }
         ))
     }
-    let isExist = true
+    
     function handleClick(e){
         if(signup){
             const pin = credentials.password === credentials.cpassword && +credentials.password
@@ -30,13 +30,13 @@ export default function Login(){
             window.location.href="/"
             alert("account created successfully")
         }else{
-        console.log(state);
+        
         
         const i = state.findIndex(user=>(
 
             user.owner.lower === credentials.username.lower && user.pin === +credentials.password
         ))
-        console.log(i)
+        
         if(typeof i !== "string" && i!==-1 && typeof i !== "undefined"){
 
             setUserAccIndex(i)
@@ -57,8 +57,7 @@ export default function Login(){
     function handleAnchorClick(){
         setSignup(prev=>!prev)
     }
-    console.log(isExist)
-    console.log(credentials);
+
     return(
         <div className="login-main">
             <input className="inp" value={credentials.username} type="text" placeholder="USERNAME" name="username" onChange={handleChange}/>
@@ -68,7 +67,7 @@ export default function Login(){
             <button className="button" onClick={handleClick}>{signup?'SIGN UP':'LOGIN'}</button>
             </Link>
             {signup?<p className="account-status">Already have account? <a onClick={handleAnchorClick}>Login here.</a></p>:<p className="account-status">Don't have account? <a onClick={handleAnchorClick}>Create one here</a></p>}
-            {/* <p>Don't have account <a>Create one here</a></p> */}
+        
             <Outlet/>
         </div>
     )

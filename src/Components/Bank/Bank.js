@@ -1,38 +1,33 @@
-import { useContext} from 'react'
+import { useContext, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 import Card from '../Card/Card'
 import LoanCard from '../Card/LoanCard'
 import { GlobalContext } from '../Context/GlobalState';
 import './Bank.css'
+import LogoutTimer from './LogoutTimer';
 import Movements from './Movements';
+import WelcomeHeader from './WelcomeHeader';
 
 export default function Bank(){
     const {userAccIndex,state}= useContext(GlobalContext)
-    // console.log(state)
-    // console.log(typeof userAccIndex)
-    // console.log(userAccIndex)
+    
+    typeof userAccIndex === 'string' && (window.location.href="/")
+    
+
     const total = state[userAccIndex].movements.reduce((acc,mov)=>mov+acc)
     const d = new Date();
     const totalDeposite = state[userAccIndex].movements.filter(mov=>mov>0).reduce((acc,mov)=>mov+acc)
     const totalWithdrawal = state[userAccIndex].movements.filter(mov=>mov<0).reduce((acc,mov)=>mov+acc,0)
-    // console.log(totalDepositeArr)
     const interest = state[userAccIndex].movements.filter(mov => mov > 0)
     .map(deposit => (deposit * state[userAccIndex].interestRate) / 100)
     .filter((int, i, arr) => {
-      // console.log(arr);
       return int >= 1;
     }).reduce((acc, int) => acc + int, 0);
 
     return(
         <section className="bank-main">
             {/* balance */}
-            
-            <div className="welcome-header">
-                <h1>Welcome Back {state[userAccIndex].owner}</h1>
-                <Link to="/">
-                <h1 className="fas fa-sign-out-alt"></h1>
-                </Link>
-            </div>
+            <WelcomeHeader name={state[userAccIndex].owner}/>
             <div className="balance">
                 <div>
                     <p className="balance__label">Current balance</p>
@@ -90,9 +85,9 @@ export default function Bank(){
                 <p className="summary_label summary_label_interest">INTEREST</p>
                 <p className="summary_value summary_value_interest">{interest}€</p>
                 </div>
-                
-                
-                
+            </div>
+            <div className="logout-timer-div">
+                <LogoutTimer />
             </div>
         </section>
     )

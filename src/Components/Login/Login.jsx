@@ -27,7 +27,8 @@ export default function Login(){
         if(signup){
             const pin = credentials.password === credentials.cpassword && +credentials.password
             createAcc(credentials.username, +pin)
-            window.location.reload(true);
+            window.location.href="/"
+            alert("account created successfully")
         }else{
         console.log(state);
         
@@ -66,7 +67,7 @@ export default function Login(){
             <Link to="home">
             <button className="button" onClick={handleClick}>{signup?'SIGN UP':'LOGIN'}</button>
             </Link>
-            {signup?<p>Already have account? <a onClick={handleAnchorClick}>Login here.</a></p>:<p>Don't have account? <a onClick={handleAnchorClick}>Create one here</a></p>}
+            {signup?<p className="account-status">Already have account? <a onClick={handleAnchorClick}>Login here.</a></p>:<p className="account-status">Don't have account? <a onClick={handleAnchorClick}>Create one here</a></p>}
             {/* <p>Don't have account <a>Create one here</a></p> */}
             <Outlet/>
         </div>

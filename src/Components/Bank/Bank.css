@@ -89,3 +89,10 @@
     display: flex;
     align-items: center;
 }
+.logout-timer-div{
+    align-self: center;
+}
+.logout-timer{
+    font-size: 1rem;
+    text-align: right;
+}

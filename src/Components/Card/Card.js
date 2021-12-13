@@ -27,19 +27,31 @@ export default function Card(props) {
 
 
     function handleClick(e){
-        
+   
         
         if(props.btnTitle === 'close'){
+
          if (inpDet.user === state[userAccIndex].accNo && inpDet.pin === state[userAccIndex].pin) {
             remove() 
             alert("account remove successfully")
          }else{
            
            alert("wrong credentials")
+           e.preventDefault()
          }
-        }else{
+        }
+        console.log(props.btnTitle)
+
+        if(props.btnTitle === 'transfer'){
+          if(typeof (inpDet.acc_no)==='string' && typeof (inpDet.amount)==='string'){
+            e.preventDefault()
+            alert("please provide valid details")
+          }else{
+
+          
 
           e.preventDefault()
+
           const takerI = state.findIndex(user=>(
             user.accNo === inpDet.acc_no
           ))
@@ -57,7 +69,9 @@ export default function Card(props) {
             user:"",
             pin:""
           })
+
         }
+      }
 
       
         

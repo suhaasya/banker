@@ -16,16 +16,21 @@ export default function LoanCard(props) {
   }
 
   function handleClick(e){
-    console.log(amount)
+    if(typeof amount === 'string'){
+      alert("please provide the amount")
+    }else{
 
+      // console.log(amount)
+      
       e.preventDefault()
       
       function operation(){
         reqLoan(amount)
         setAmount("")
       }
-
+      
       setTimeout(operation, 3000)
+    }
   }
 
 

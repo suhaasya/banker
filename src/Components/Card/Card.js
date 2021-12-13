@@ -40,7 +40,7 @@ export default function Card(props) {
            e.preventDefault()
          }
         }
-        console.log(props.btnTitle)
+        // console.log(props.btnTitle)
 
         if(props.btnTitle === 'transfer'){
           if(typeof (inpDet.acc_no)==='string' && typeof (inpDet.amount)==='string'){

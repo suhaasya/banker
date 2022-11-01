@@ -5,6 +5,7 @@ import Button from "../Components/Button";
 import Input from "../Components/Input";
 import { v4 as uuidv4 } from "uuid";
 import { createAccount } from "../features/dataSlice";
+import getDate from "../utils/getDate";
 
 type FormDataTypes = {
   username?: String;
@@ -26,10 +27,9 @@ function SignUp() {
         createAccount({
           accountNo: uuidv4(),
           username: formData?.username,
-          movements: [500],
+          movements: [{ amount: 500, date: getDate() }],
           interestRate: 1.2,
           password: formData?.confirmPassword,
-          movementsDate: [],
         })
       );
     } else {

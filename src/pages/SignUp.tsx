@@ -43,38 +43,40 @@ function SignUp() {
   }
 
   return (
-    <div className="xl:max-w-screen lg:w-1/5 lg:mx-auto w-full h-screen flex items-center ">
-      <div className="flex flex-col gap-4 bg-gray p-8 rounded-lg">
-        <h3>Sign up</h3>
-        <Input
-          placeholder="username"
-          name="username"
-          type={"text"}
-          onChange={handleChange}
-        />
-        <Input
-          placeholder="password"
-          name="password"
-          type={"password"}
-          onChange={handleChange}
-        />
-        <Input
-          placeholder="confirm password"
-          name="confirmPassword"
-          onChange={handleChange}
-          type={"password"}
-        />
-        <Button onClick={handleClick} hoverColor="blue">
-          sign up
-        </Button>
-        <p>
-          Already have account?
-          <Link to={"/"}>
-            <span>Login</span>
-          </Link>
-        </p>
+    <section className="h-screen flex items-center">
+      <div className="container max-w-screen-sm mx-auto p-[1%] sm:px-[5%]">
+        <div className="flex flex-col gap-4 bg-gray p-8 rounded-lg">
+          <h3>Sign up</h3>
+          <Input
+            placeholder="username"
+            name="username"
+            type={"text"}
+            onChange={handleChange}
+          />
+          <Input
+            placeholder="password"
+            name="password"
+            type={"password"}
+            onChange={handleChange}
+          />
+          <Input
+            placeholder="confirm password"
+            name="confirmPassword"
+            onChange={handleChange}
+            type={"password"}
+          />
+          <Button onClick={handleClick} hoverColor="blue">
+            sign up
+          </Button>
+          <p>
+            Already have account?
+            <Link to={"/"}>
+              <span className="text-blue">Login</span>
+            </Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

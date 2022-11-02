@@ -14,9 +14,7 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const accounts = useAppSelector((state) => state.data);
-  localStorage.setItem("accounts", JSON.stringify(accounts));
 
-  console.log(accounts);
   const [loginData, setLoginData] = useState<LoginDataTypes>({
     username: "",
     password: "",
@@ -44,22 +42,46 @@ function Login() {
   }
 
   return (
-    <div className="xl:max-w-screen lg:w-1/5 lg:mx-auto w-full h-screen flex items-center ">
-      <div className="flex flex-col gap-4 bg-gray p-8 rounded-lg">
-        <h3>Login</h3>
-        <Input placeholder="username" name="username" onChange={handleChange} />
-        <Input placeholder="password" name="password" onChange={handleChange} />
-        <Button hoverColor="blue" onClick={handleClick}>
-          Login
-        </Button>
-        <p>
-          Don't have account?
-          <Link to={"/signup"}>
-            <span> Create one here</span>
-          </Link>
-        </p>
+    <section className="h-screen flex items-center">
+      <div className="container max-w-screen-sm mx-auto p-[1%] sm:px-[5%]">
+        <div className="text-center">
+          <p>
+            <span className="font-bold">
+              Test Accounts: <br />
+            </span>
+            <span className="font-bold">username:</span>
+            demo <span className="font-bold">password:</span>
+            demo@123 <br />
+            <span className="font-bold"> username: </span> test{" "}
+            <span className="font-bold"> password:</span> test@123
+          </p>
+        </div>
+        <div className="flex flex-col gap-4 bg-gray p-8 rounded-lg">
+          <h3>Login</h3>
+          <Input
+            placeholder="username"
+            name="username"
+            type={"text"}
+            onChange={handleChange}
+          />
+          <Input
+            placeholder="password"
+            name="password"
+            type="password"
+            onChange={handleChange}
+          />
+          <Button hoverColor="blue" onClick={handleClick}>
+            Login
+          </Button>
+          <p>
+            Don't have account?
+            <Link to={"/signup"}>
+              <span className="text-blue"> Create one here</span>
+            </Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
